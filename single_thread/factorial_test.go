@@ -1,8 +1,10 @@
 
 package main
 
-import "testing"
-import "./prime"
+import (
+    "testing"
+    "./prime"
+)
 
 func TestCompute(t *testing.T) {
     cases := []struct {

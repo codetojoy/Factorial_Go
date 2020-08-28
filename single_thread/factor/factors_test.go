@@ -1,9 +1,9 @@
 
-package main
+package factor
 
 import (
     "testing"
-    "./prime"
+    "../prime"
 )
 
 func TestPut(t *testing.T) {

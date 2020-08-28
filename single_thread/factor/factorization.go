@@ -1,10 +1,10 @@
 
-package main
+package factor
 
 import (
     "fmt"
     "log"
-    "./prime"
+    "../prime"
 )
 
 type Factorization struct {

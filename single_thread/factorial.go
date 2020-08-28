@@ -3,13 +3,14 @@ package main
 
 import (
     "fmt"
+    "./factor"
     "./prime"
 )
 
 type Factorial struct {
     n int
     max int
-    factorization Factorization
+    factorization factor.Factorization
     primeIndex prime.PrimeIndex
 }
 
@@ -18,10 +19,10 @@ func NewFactorial(n int, max int, primeIndex prime.PrimeIndex) Factorial {
 }
 
 func (f *Factorial) Compute() {
-    accumulation := NewFactorization(2, f.max, f.primeIndex)
+    accumulation := factor.NewFactorization(2, f.max, f.primeIndex)
     accumulation.Factor()
     for i := 3; i <= f.n; i++ {
-        current := NewFactorization(i, f.max, f.primeIndex)
+        current := factor.NewFactorization(i, f.max, f.primeIndex)
         current.Factor()
         fmt.Printf("TRACER acc Compute(%d) ... %v\n", f.n, accumulation.GetPureFactorsString())
         fmt.Printf("TRACER cur Compute(%d) ... %v\n", f.n, current.GetPureFactorsString())

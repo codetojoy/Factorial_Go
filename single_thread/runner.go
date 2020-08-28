@@ -3,6 +3,7 @@ package main
 
 import (
     "fmt"
+    "./factor"
     "./prime"
 )
 
@@ -12,7 +13,7 @@ func process1(n int) {
     max := 10
 
     for i := 2; i <= n; i++ {
-        factorization := NewFactorization(i, max, primeIndex)
+        factorization := factor.NewFactorization(i, max, primeIndex)
         factorization.Factor()
         fmt.Printf("TRACER i: %d %v \n", i, factorization)
     }
@@ -24,9 +25,9 @@ func process2(n int) {
     a := 2
     b := 2
     max := n
-    factorizationA := NewFactorization(a, max, primeIndex)
+    factorizationA := factor.NewFactorization(a, max, primeIndex)
     factorizationA.Factor()
-    factorizationB := NewFactorization(b, max, primeIndex)
+    factorizationB := factor.NewFactorization(b, max, primeIndex)
     factorizationB.Factor()
 
     // test

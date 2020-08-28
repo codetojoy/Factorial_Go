@@ -1,11 +1,11 @@
 
-package main
+package factor
 
 import (
     "errors"
     "fmt"
     "strings"
-    "./prime"
+    "../prime"
 )
 
 type Factors struct {
