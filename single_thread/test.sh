@@ -1,9 +1,11 @@
 #!/bin/bash
 
+set -e
+
 export GOPATH=$PWD
 
 HOME_DIR=$PWD
-ROOT_DIR=src/github.com/codetojoy
+ROOT_DIR=$PWD/src/github.com/codetojoy
 
 cd $ROOT_DIR/prime
 go test -test.v
