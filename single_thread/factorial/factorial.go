@@ -1,10 +1,10 @@
 
-package main
+package factorial
 
 import (
     "fmt"
-    "./factor"
-    "./prime"
+    "../factor"
+    "../prime"
 )
 
 type Factorial struct {

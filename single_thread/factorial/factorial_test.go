@@ -1,9 +1,9 @@
 
-package main
+package factorial
 
 import (
     "testing"
-    "./prime"
+    "../prime"
 )
 
 func TestCompute(t *testing.T) {

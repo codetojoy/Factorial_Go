@@ -4,6 +4,7 @@ package main
 import (
     "fmt"
     "./factor"
+    "./factorial"
     "./prime"
 )
 
@@ -34,6 +35,11 @@ func process2(n int) {
     resultFactorization := factorizationA.Multiply(factorizationB)
     result := resultFactorization.GetPureFactorsString()
     fmt.Printf("TRACER result: %v\n", result)
+
+    i := 3
+    factorial := factorial.NewFactorial(i, max, primeIndex)
+    factorial.Compute()
+    fmt.Printf("TRACER factorial: %v \n", factorial.GetPureFactorsString())
     /*
     max := 10
     i := 3
