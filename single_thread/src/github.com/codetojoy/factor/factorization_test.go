@@ -3,7 +3,7 @@ package factor
 
 import (
     "testing"
-    "../prime"
+    "github.com/codetojoy/prime"
 )
 
 func TestFactorizationMultiply(t *testing.T) {

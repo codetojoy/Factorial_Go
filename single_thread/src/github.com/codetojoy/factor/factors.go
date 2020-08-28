@@ -5,7 +5,7 @@ import (
     "errors"
     "fmt"
     "strings"
-    "../prime"
+    "github.com/codetojoy/prime"
 )
 
 type Factors struct {

@@ -3,8 +3,8 @@ package factorial
 
 import (
     "fmt"
-    "../factor"
-    "../prime"
+    "github.com/codetojoy/factor"
+    "github.com/codetojoy/prime"
 )
 
 type Factorial struct {

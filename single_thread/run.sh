@@ -1,3 +1,5 @@
 #!/bin/bash
 
-go run runner.go 
+export GOPATH=$PWD
+
+go run src/github.com/codetojoy/runner.go 

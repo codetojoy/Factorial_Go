@@ -3,9 +3,9 @@ package main
 
 import (
     "fmt"
-    "./factor"
-    "./factorial"
-    "./prime"
+    "github.com/codetojoy/factor"
+    "github.com/codetojoy/factorial"
+    "github.com/codetojoy/prime"
 )
 
 func process1(n int) {

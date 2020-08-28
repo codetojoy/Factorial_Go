@@ -4,7 +4,7 @@ package factor
 import (
     "fmt"
     "log"
-    "../prime"
+    "github.com/codetojoy/prime"
 )
 
 type Factorization struct {

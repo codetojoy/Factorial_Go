@@ -3,7 +3,7 @@ package factorial
 
 import (
     "testing"
-    "../prime"
+    "github.com/codetojoy/prime"
 )
 
 func TestCompute(t *testing.T) {
