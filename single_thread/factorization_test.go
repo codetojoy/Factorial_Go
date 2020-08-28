@@ -1,7 +1,10 @@
 
 package main
 
-import "testing"
+import (
+    "testing"
+    "./prime"
+)
 
 func TestFactorizationMultiply(t *testing.T) {
     cases := []struct {
@@ -15,8 +18,7 @@ func TestFactorizationMultiply(t *testing.T) {
     }
 
     max := 30
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(max)
+    primeIndex := prime.New(max)
 
     for _, c := range cases {
         factorizationA := NewFactorization(c.inA, max, primeIndex)
@@ -52,8 +54,7 @@ func TestFactor(t *testing.T) {
     }
 
     max := 30
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(max)
+    primeIndex := prime.New(max)
 
     for _, c := range cases {
         factorization := NewFactorization(c.in, max, primeIndex)

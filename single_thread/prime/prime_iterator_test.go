@@ -1,11 +1,10 @@
 
-package main
+package prime
 
 import "testing"
 
 func TestNext(t *testing.T) {
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(10)
+    primeIndex := New(10)
     primeIterator := NewPrimeIterator(primeIndex)
 
     // test

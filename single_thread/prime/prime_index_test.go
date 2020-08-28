@@ -1,5 +1,5 @@
 
-package main
+package prime
 
 import "testing"
 
@@ -11,8 +11,7 @@ func TestIsPrime(t *testing.T) {
         {2,true}, {3,true}, {4,false}, {5,true}, {6,false},
         {7,true}, {8,false}, {9,false}, {10,false},
     }
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(11);
+    primeIndex := New(11);
 
     for _, c := range cases {
         // test
@@ -30,8 +29,7 @@ func TestGetIndexForPrime(t *testing.T) {
     }{
         {2,0}, {3,1}, {5,2}, {7,3}, {11,4},
     }
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(8);
+    primeIndex := New(8);
 
     for _, c := range cases {
         // test
@@ -49,8 +47,7 @@ func TestGetPrimeForIndex(t *testing.T) {
     }{
         {0,2}, {1,3}, {2,5}, {3,7}, {4,11},
     }
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(8);
+    primeIndex := New(8);
 
     for _, c := range cases {
         // test

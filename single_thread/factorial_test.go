@@ -2,6 +2,7 @@
 package main
 
 import "testing"
+import "./prime"
 
 func TestCompute(t *testing.T) {
     cases := []struct {
@@ -15,8 +16,7 @@ func TestCompute(t *testing.T) {
     }
 
     max := 30
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(max)
+    primeIndex := prime.New(max)
 
     for _, c := range cases {
         factorial := NewFactorial(c.in, max, primeIndex)

@@ -1,5 +1,5 @@
 
-package main
+package prime
 
 import (
     "math/big"
@@ -8,6 +8,12 @@ import (
 type PrimeIndex struct {
     primes []int
     index_map map[int]int
+}
+
+func New(index int) PrimeIndex {
+    result := PrimeIndex{}
+    result.Initialize(index)
+    return result
 }
 
 // TODO: make this a constructor function?

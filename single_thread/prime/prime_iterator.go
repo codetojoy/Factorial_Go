@@ -1,5 +1,5 @@
 
-package main
+package prime
 
 type PrimeIterator struct {
     index int

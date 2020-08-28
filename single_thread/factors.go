@@ -5,11 +5,12 @@ import (
     "errors"
     "fmt"
     "strings"
+    "./prime"
 )
 
 type Factors struct {
     factors []int
-    primeIndex PrimeIndex
+    primeIndex prime.PrimeIndex
     max int
 }
 
@@ -17,7 +18,7 @@ func NewFactorsForTesting(max int, factors[] int) Factors {
     return Factors{factors: factors, max: max}
 }
 
-func NewFactors(max int, primeIndex PrimeIndex) Factors {
+func NewFactors(max int, primeIndex prime.PrimeIndex) Factors {
     result := Factors{max: max, primeIndex: primeIndex}
 
     // this seems wrong:

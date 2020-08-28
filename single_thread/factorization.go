@@ -4,20 +4,21 @@ package main
 import (
     "fmt"
     "log"
+    "./prime"
 )
 
 type Factorization struct {
     n int
     max int
     factors Factors
-    primeIndex PrimeIndex
-    primeIterator PrimeIterator
+    primeIndex prime.PrimeIndex
+    primeIterator prime.PrimeIterator
 }
 
-func NewFactorization(n int, max int, primeIndex PrimeIndex) Factorization {
+func NewFactorization(n int, max int, primeIndex prime.PrimeIndex) Factorization {
     result := Factorization{n: n, max: max, primeIndex: primeIndex}
     result.factors = NewFactors(max, primeIndex)
-    result.primeIterator = NewPrimeIterator(primeIndex)
+    result.primeIterator = prime.NewPrimeIterator(primeIndex)
     return result
 }
 

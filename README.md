@@ -8,3 +8,7 @@
         - e.g. `24! = 23! x 4!`
 * I typically avoid using `BigInt` or other assists.
     - That said, the data structures and algorithms are faily simplistic. 
+
+## Note
+
+* I'm a newbie with Go, so the code is not yet idiomatic.

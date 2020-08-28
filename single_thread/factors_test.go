@@ -1,11 +1,13 @@
 
 package main
 
-import "testing"
+import (
+    "testing"
+    "./prime"
+)
 
 func TestPut(t *testing.T) {
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(10)
+    primeIndex := prime.New(10)
     factors := NewFactors(10, primeIndex)
 
     // test

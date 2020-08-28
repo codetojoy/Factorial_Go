@@ -3,11 +3,11 @@ package main
 
 import (
     "fmt"
+    "./prime"
 )
 
 func process1(n int) {
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(n)
+    primeIndex := prime.New(n)
 
     max := 10
 
@@ -19,8 +19,7 @@ func process1(n int) {
 }
 
 func process2(n int) {
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(n)
+    primeIndex := prime.New(n)
 
     a := 2
     b := 2

@@ -3,16 +3,17 @@ package main
 
 import (
     "fmt"
+    "./prime"
 )
 
 type Factorial struct {
     n int
     max int
     factorization Factorization
-    primeIndex PrimeIndex
+    primeIndex prime.PrimeIndex
 }
 
-func NewFactorial(n int, max int, primeIndex PrimeIndex) Factorial {
+func NewFactorial(n int, max int, primeIndex prime.PrimeIndex) Factorial {
     return Factorial{n: n, max: max, primeIndex: primeIndex}
 }
 
