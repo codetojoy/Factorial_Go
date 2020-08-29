@@ -60,7 +60,7 @@ func main() {
     n := 10
     tmp1 := false
     if tmp1 { process1(n) }
-    tmp2 := true
+    tmp2 := false
     if tmp2 { process2(n) }
     tmp3 := true
     if tmp3 { process3(n) }
