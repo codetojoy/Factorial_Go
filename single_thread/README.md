@@ -1,8 +1,9 @@
 
 ### TODO
 
+* test edge-cases
 * refine import so that we don't need `prime.PrimeIndex`
 * rename `New()` function for `PrimeIndex` ?
-* use `GOPATH` effectively ?
-* test edge-cases 
-* code coverage in tests?
+* `Config` struct to consolidate params
+x * use `GOPATH` effectively ?
+x * code coverage in tests?
