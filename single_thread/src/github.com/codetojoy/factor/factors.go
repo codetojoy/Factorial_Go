@@ -22,8 +22,7 @@ func NewFactors(config config.Config) Factors {
     result := Factors{config: config}
 
     // this seems wrong:
-    // TODO: at least use HighestPrime
-    for i := 0; i <= config.Max; i++ {
+    for i := 0; i <= config.HighestPrime; i++ {
         result.factors = append(result.factors, 0)
     }
 

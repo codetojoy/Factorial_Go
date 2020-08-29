@@ -19,7 +19,7 @@ func process(n int) {
 }
 
 func main() {
-    n := 10
+    n := 50
     process(n)
 
     fmt.Println("Ready.")
