@@ -3,26 +3,27 @@ package factorial
 
 import (
     "fmt"
+
+    "github.com/codetojoy/config"
     "github.com/codetojoy/factor"
-    "github.com/codetojoy/prime"
+    // "github.com/codetojoy/prime"
 )
 
 type Factorial struct {
     n int
-    max int
+    config config.Config
     factorization factor.Factorization
-    primeIndex prime.PrimeIndex
 }
 
-func NewFactorial(n int, max int, primeIndex prime.PrimeIndex) Factorial {
-    return Factorial{n: n, max: max, primeIndex: primeIndex}
+func NewFactorial(n int, config config.Config) Factorial {
+    return Factorial{n: n, config: config}
 }
 
 func (f *Factorial) Compute() {
-    accumulation := factor.NewFactorization(2, f.max, f.primeIndex)
+    accumulation := factor.NewFactorization(2, f.config.Max, f.config.PrimeIndex)
     accumulation.Factor()
     for i := 3; i <= f.n; i++ {
-        current := factor.NewFactorization(i, f.max, f.primeIndex)
+        current := factor.NewFactorization(i, f.config.Max, f.config.PrimeIndex)
         current.Factor()
         // fmt.Printf("TRACER acc Compute(%d) ... %v\n", f.n, accumulation.GetPureFactorsString())
         // fmt.Printf("TRACER cur Compute(%d) ... %v\n", f.n, current.GetPureFactorsString())

@@ -3,7 +3,8 @@ package factorial
 
 import (
     "testing"
-    "github.com/codetojoy/prime"
+
+    "github.com/codetojoy/config"
 )
 
 func TestCompute(t *testing.T) {
@@ -18,10 +19,10 @@ func TestCompute(t *testing.T) {
     }
 
     max := 30
-    primeIndex := prime.New(max)
+    config := config.New(max)
 
     for _, c := range cases {
-        factorial := NewFactorial(c.in, max, primeIndex)
+        factorial := NewFactorial(c.in, config)
 
         // test
         factorial.Compute()
@@ -35,9 +36,9 @@ func TestCompute(t *testing.T) {
 
 func TestString(t *testing.T) {
     max := 30
-    primeIndex := prime.New(max)
+    config := config.New(max)
     n := 5
-    factorial := NewFactorial(n, max, primeIndex)
+    factorial := NewFactorial(n, config)
     factorial.Compute()
 
     // test

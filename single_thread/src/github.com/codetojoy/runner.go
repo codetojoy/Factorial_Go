@@ -3,6 +3,8 @@ package main
 
 import (
     "fmt"
+
+    "github.com/codetojoy/config"
     "github.com/codetojoy/factor"
     "github.com/codetojoy/factorial"
     "github.com/codetojoy/prime"
@@ -36,17 +38,19 @@ func process2(n int) {
     result := resultFactorization.GetPureFactorsString()
     fmt.Printf("TRACER result: %v\n", result)
 
+    /*
     i := 3
     factorial := factorial.NewFactorial(i, max, primeIndex)
     factorial.Compute()
     fmt.Printf("TRACER factorial: %v \n", factorial.GetPureFactorsString())
+    */
 }
 
 func process3(n int) {
-    primeIndex := prime.New(n)
+    config := config.New(n)
 
     for i:= 2; i <= n; i++ {
-        f := factorial.NewFactorial(i, n, primeIndex)
+        f := factorial.NewFactorial(i, config)
         f.Compute()
         fmt.Printf("TRACER f: %d -> %v \n", i, f.GetPureFactorsString())
     }

@@ -6,9 +6,9 @@ import (
 )
 
 type Config struct {
-    max int
-    highestPrime int
-    primeIndex prime.PrimeIndex
+    Max int
+    HighestPrime int
+    PrimeIndex prime.PrimeIndex
 }
 
 func getHighestPrime(n int, primeIndex prime.PrimeIndex) int {
@@ -33,5 +33,5 @@ func New(max int) Config {
     primeIndex := prime.New(max)
     highestPrime := getHighestPrime(max, primeIndex)
 
-    return Config{max: max, highestPrime: highestPrime, primeIndex: primeIndex}
+    return Config{Max: max, HighestPrime: highestPrime, PrimeIndex: primeIndex}
 }
