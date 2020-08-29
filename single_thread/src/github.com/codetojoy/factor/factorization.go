@@ -38,6 +38,7 @@ func (f *Factorization) Multiply(g Factorization) Factorization {
     result := NewFactorization(f.n, f.max, f.primeIndex)
     resultFactors, err := f.factors.Multiply(g.factors)
 
+    // TODO: this should bubble up the error where all are handled in one place
     if err != nil {
         log.Fatal(err)
     } else {

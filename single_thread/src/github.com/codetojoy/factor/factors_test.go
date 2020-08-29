@@ -74,3 +74,31 @@ func TestMultiply(t *testing.T) {
         }
     }
 }
+
+func TestMultiplyError(t *testing.T) {
+    maxA := 5
+    maxB := 3
+    factorsA := NewFactorsForTesting(maxA, []int{1,0,0,0,0})
+    factorsB := NewFactorsForTesting(maxB, []int{1,0,0})
+
+    // test
+    _, e := factorsA.Multiply(factorsB)
+
+    if e == nil {
+        t.Errorf("Factors.Multiply() expected error")
+    }
+}
+
+func TestStringError(t *testing.T) {
+    max := 5
+    factors := NewFactorsForTesting(max, []int{})
+
+    // test
+    result := factors.String()
+
+    expected := "ERROR: NONE"
+
+    if result != expected {
+        t.Errorf("Factors.Multiply() expected %v", expected)
+    }
+}
