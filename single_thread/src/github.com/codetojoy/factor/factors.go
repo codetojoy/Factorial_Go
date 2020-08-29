@@ -32,7 +32,7 @@ func NewFactors(max int, primeIndex prime.PrimeIndex) Factors {
 func (f *Factors) Multiply(g Factors) (Factors, error) {
     result := NewFactors(f.max, f.primeIndex)
 
-    fmt.Printf("factors.Multiply cp 1 :: %d %d %d %d\n", f.max, len(f.factors), len(g.factors), len(result.factors))
+    // fmt.Printf("factors.Multiply cp 1 :: %d %d %d %d\n", f.max, len(f.factors), len(g.factors), len(result.factors))
 
     var e error = nil
     if len(f.factors) == len(g.factors) {

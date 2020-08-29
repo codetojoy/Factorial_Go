@@ -40,37 +40,26 @@ func process2(n int) {
     factorial := factorial.NewFactorial(i, max, primeIndex)
     factorial.Compute()
     fmt.Printf("TRACER factorial: %v \n", factorial.GetPureFactorsString())
-    /*
-    max := 10
-    i := 3
-    factorial := NewFactorial(i, max, primeIndex)
-    factorial.Compute()
-    fmt.Printf("TRACER factorial: %v \n", factorial.GetPureFactorsString())
-    x := 5
-    ceiling := (x/2) + 1
-    f := NewFactorization(x, primeIndex)
-    f.Factor()
-    fmt.Printf("TRACER x: %d ceiling: %d f: %v \n", x, ceiling, f.GetPureFactorsString())
-    for i := 2; i <= 3; i++ {
+}
+
+func process3(n int) {
+    primeIndex := prime.New(n)
+
+    for i:= 2; i <= n; i++ {
+        f := factorial.NewFactorial(i, n, primeIndex)
+        f.Compute()
+        fmt.Printf("TRACER f: %d -> %v \n", i, f.GetPureFactorsString())
     }
-    */
 }
 
 func main() {
-    n := 20
+    n := 10
     tmp1 := false
     if tmp1 { process1(n) }
     tmp2 := true
     if tmp2 { process2(n) }
-    /*
-    fmt.Println("TRACER ------------------")
-    primeIndex := PrimeIndex{}
-    primeIndex.Initialize(20);
-    fmt.Printf("TRACER p[%d]: %d\n", 0, primeIndex.GetPrimeForIndex(0))
-    fmt.Printf("TRACER p[%d]: %d\n", 1, primeIndex.GetPrimeForIndex(1))
-    for i := 0; i < 20; i++ {
-        fmt.Printf("TRACER p[%d]: %d\n", i, primeIndex.GetPrimeForIndex(i))
-    }
-    */
+    tmp3 := true
+    if tmp3 { process3(n) }
+
     fmt.Println("Ready.")
 }
