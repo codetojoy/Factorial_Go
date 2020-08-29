@@ -4,14 +4,15 @@ package factor
 import (
     "fmt"
     "log"
+
+    "github.com/codetojoy/config"
     "github.com/codetojoy/prime"
 )
 
 type Factorization struct {
     n int
-    max int
+    config config.Config
     factors Factors
-    primeIndex prime.PrimeIndex
     primeIterator prime.PrimeIterator
 }
 
@@ -19,10 +20,10 @@ const (
     UNKNOWN_VALUE = -1
 )
 
-func NewFactorization(n int, max int, primeIndex prime.PrimeIndex) Factorization {
-    result := Factorization{n: n, max: max, primeIndex: primeIndex}
-    result.factors = NewFactors(max, primeIndex)
-    result.primeIterator = prime.NewPrimeIterator(primeIndex)
+func NewFactorization(n int, config config.Config) Factorization {
+    result := Factorization{n: n, config: config}
+    result.factors = NewFactors(config.Max, config.PrimeIndex)
+    result.primeIterator = prime.NewPrimeIterator(config.PrimeIndex)
     return result
 }
 
@@ -39,7 +40,7 @@ func GetExponent(n int, i int) int {
 }
 
 func (f *Factorization) Multiply(g Factorization) Factorization {
-    result := NewFactorization(f.n, f.max, f.primeIndex)
+    result := NewFactorization(f.n, f.config)
     resultFactors, err := f.factors.Multiply(g.factors)
 
     // TODO: this should bubble up the error where all are handled in one place
@@ -54,7 +55,7 @@ func (f *Factorization) Multiply(g Factorization) Factorization {
 }
 
 func (f *Factorization) Factor() {
-    if f.primeIndex.IsPrime(f.n) {
+    if f.config.PrimeIndex.IsPrime(f.n) {
         f.factors.Put(f.n, 1)
     } else {
         ceiling := (f.n/2) + 1

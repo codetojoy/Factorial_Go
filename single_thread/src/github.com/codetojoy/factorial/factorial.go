@@ -6,7 +6,6 @@ import (
 
     "github.com/codetojoy/config"
     "github.com/codetojoy/factor"
-    // "github.com/codetojoy/prime"
 )
 
 type Factorial struct {
@@ -20,10 +19,10 @@ func NewFactorial(n int, config config.Config) Factorial {
 }
 
 func (f *Factorial) Compute() {
-    accumulation := factor.NewFactorization(2, f.config.Max, f.config.PrimeIndex)
+    accumulation := factor.NewFactorization(2, f.config)
     accumulation.Factor()
     for i := 3; i <= f.n; i++ {
-        current := factor.NewFactorization(i, f.config.Max, f.config.PrimeIndex)
+        current := factor.NewFactorization(i, f.config)
         current.Factor()
         // fmt.Printf("TRACER acc Compute(%d) ... %v\n", f.n, accumulation.GetPureFactorsString())
         // fmt.Printf("TRACER cur Compute(%d) ... %v\n", f.n, current.GetPureFactorsString())

@@ -3,7 +3,8 @@ package factor
 
 import (
     "testing"
-    "github.com/codetojoy/prime"
+
+    "github.com/codetojoy/config"
 )
 
 func TestFactorizationMultiply(t *testing.T) {
@@ -18,12 +19,12 @@ func TestFactorizationMultiply(t *testing.T) {
     }
 
     max := 30
-    primeIndex := prime.New(max)
+    config := config.New(max)
 
     for _, c := range cases {
-        factorizationA := NewFactorization(c.inA, max, primeIndex)
+        factorizationA := NewFactorization(c.inA, config)
         factorizationA.Factor()
-        factorizationB := NewFactorization(c.inB, max, primeIndex)
+        factorizationB := NewFactorization(c.inB, config)
         factorizationB.Factor()
 
         // test
@@ -54,10 +55,10 @@ func TestFactor(t *testing.T) {
     }
 
     max := 30
-    primeIndex := prime.New(max)
+    config := config.New(max)
 
     for _, c := range cases {
-        factorization := NewFactorization(c.in, max, primeIndex)
+        factorization := NewFactorization(c.in, config)
 
         // test
         factorization.Factor()
