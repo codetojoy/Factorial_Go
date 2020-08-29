@@ -3,12 +3,13 @@ package factor
 
 import (
     "testing"
-    "github.com/codetojoy/prime"
+
+    "github.com/codetojoy/config"
 )
 
 func TestPut(t *testing.T) {
-    primeIndex := prime.New(10)
-    factors := NewFactors(10, primeIndex)
+    config := config.New(10)
+    factors := NewFactors(config)
 
     // test
     factors.Put(2,2);
@@ -34,11 +35,11 @@ func TestEquals(t *testing.T) {
         { []int{3,3,3}, []int{3,4,5}, false },
     }
 
-    max := 5
+    config := config.New(5)
 
     for _, c := range cases {
-        factorsA := NewFactorsForTesting(max, c.inA)
-        factorsB := NewFactorsForTesting(max, c.inB)
+        factorsA := NewFactorsForTesting(config, c.inA)
+        factorsB := NewFactorsForTesting(config, c.inB)
 
         // test
         result := factorsA.Equals(factorsB)
@@ -59,12 +60,12 @@ func TestMultiply(t *testing.T) {
         { []int{1,1,0,0,0}, []int{1,1,0,0,1}, []int{2,2,0,0,1} },
     }
 
-    max := 5
+    config := config.New(5)
 
     for _, c := range cases {
-        factorsA := NewFactorsForTesting(max, c.inA)
-        factorsB := NewFactorsForTesting(max, c.inB)
-        factorsExpected := NewFactorsForTesting(max, c.expected)
+        factorsA := NewFactorsForTesting(config, c.inA)
+        factorsB := NewFactorsForTesting(config, c.inB)
+        factorsExpected := NewFactorsForTesting(config, c.expected)
 
         // test
         result, e := factorsA.Multiply(factorsB)
@@ -76,10 +77,10 @@ func TestMultiply(t *testing.T) {
 }
 
 func TestMultiplyError(t *testing.T) {
-    maxA := 5
-    maxB := 3
-    factorsA := NewFactorsForTesting(maxA, []int{1,0,0,0,0})
-    factorsB := NewFactorsForTesting(maxB, []int{1,0,0})
+    configA := config.New(5)
+    configB := config.New(3)
+    factorsA := NewFactorsForTesting(configA, []int{1,0,0,0,0})
+    factorsB := NewFactorsForTesting(configB, []int{1,0,0})
 
     // test
     _, e := factorsA.Multiply(factorsB)
@@ -90,8 +91,8 @@ func TestMultiplyError(t *testing.T) {
 }
 
 func TestStringError(t *testing.T) {
-    max := 5
-    factors := NewFactorsForTesting(max, []int{})
+    config := config.New(5)
+    factors := NewFactorsForTesting(config, []int{})
 
     // test
     result := factors.String()

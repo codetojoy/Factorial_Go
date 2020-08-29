@@ -5,24 +5,25 @@ import (
     "errors"
     "fmt"
     "strings"
-    "github.com/codetojoy/prime"
+
+    "github.com/codetojoy/config"
 )
 
 type Factors struct {
+    config config.Config
     factors []int
-    primeIndex prime.PrimeIndex
-    max int
 }
 
-func NewFactorsForTesting(max int, factors[] int) Factors {
-    return Factors{factors: factors, max: max}
+func NewFactorsForTesting(config config.Config, factors[] int) Factors {
+    return Factors{config: config, factors: factors}
 }
 
-func NewFactors(max int, primeIndex prime.PrimeIndex) Factors {
-    result := Factors{max: max, primeIndex: primeIndex}
+func NewFactors(config config.Config) Factors {
+    result := Factors{config: config}
 
     // this seems wrong:
-    for i := 0; i <= max; i++ {
+    // TODO: at least use HighestPrime
+    for i := 0; i <= config.Max; i++ {
         result.factors = append(result.factors, 0)
     }
 
@@ -30,7 +31,7 @@ func NewFactors(max int, primeIndex prime.PrimeIndex) Factors {
 }
 
 func (f *Factors) Multiply(g Factors) (Factors, error) {
-    result := NewFactors(f.max, f.primeIndex)
+    result := NewFactors(f.config)
 
     // fmt.Printf("factors.Multiply cp 1 :: %d %d %d %d\n", f.max, len(f.factors), len(g.factors), len(result.factors))
 
@@ -60,7 +61,7 @@ func (f *Factors) Equals(g Factors) bool {
 }
 
 func (f *Factors) Put(prime int, value int) {
-    index := f.primeIndex.GetIndexForPrime(prime)
+    index := f.config.PrimeIndex.GetIndexForPrime(prime)
     f.factors[index] = value
 }
 
@@ -73,7 +74,7 @@ func (f Factors) String() string {
 
     for index, value := range f.factors {
         if value > 0 {
-            prime := f.primeIndex.GetPrimeForIndex(index)
+            prime := f.config.PrimeIndex.GetPrimeForIndex(index)
             result.WriteString(fmt.Sprintf("%d: %d, ", prime, value))
         }
     }

@@ -22,7 +22,7 @@ const (
 
 func NewFactorization(n int, config config.Config) Factorization {
     result := Factorization{n: n, config: config}
-    result.factors = NewFactors(config.Max, config.PrimeIndex)
+    result.factors = NewFactors(config)
     result.primeIterator = prime.NewPrimeIterator(config.PrimeIndex)
     return result
 }
