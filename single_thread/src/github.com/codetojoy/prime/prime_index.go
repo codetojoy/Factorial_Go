@@ -10,13 +10,12 @@ type PrimeIndex struct {
     index_map map[int]int
 }
 
-func New(index int) PrimeIndex {
+func New(index int) *PrimeIndex {
     result := PrimeIndex{}
     result.initialize(index)
-    return result
+    return &result
 }
 
-// TODO: make this a constructor function?
 func (p *PrimeIndex) initialize(index int) {
     p.index_map = make(map[int]int)
     num_primes := len(p.primes)

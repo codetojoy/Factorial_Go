@@ -3,10 +3,10 @@ package prime
 
 type PrimeIterator struct {
     index int
-    primeIndex PrimeIndex
+    primeIndex *PrimeIndex
 }
 
-func NewPrimeIterator(primeIndex PrimeIndex) PrimeIterator {
+func NewPrimeIterator(primeIndex *PrimeIndex) PrimeIterator {
     return PrimeIterator{index: 0, primeIndex: primeIndex}
 }
 

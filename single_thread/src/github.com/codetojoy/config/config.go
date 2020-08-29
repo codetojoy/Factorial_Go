@@ -8,10 +8,10 @@ import (
 type Config struct {
     Max int
     HighestPrime int
-    PrimeIndex prime.PrimeIndex
+    PrimeIndex *prime.PrimeIndex
 }
 
-func getHighestPrime(n int, primeIndex prime.PrimeIndex) int {
+func getHighestPrime(n int, primeIndex *prime.PrimeIndex) int {
     primeIterator := prime.NewPrimeIterator(primeIndex)
     primeValue := primeIterator.Next()
     result := primeValue
