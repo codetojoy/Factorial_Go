@@ -32,8 +32,6 @@ func NewFactors(config config.Config) Factors {
 func (f *Factors) Multiply(g Factors) (Factors, error) {
     result := NewFactors(f.config)
 
-    // fmt.Printf("factors.Multiply cp 1 :: %d %d %d %d\n", f.max, len(f.factors), len(g.factors), len(result.factors))
-
     var e error = nil
     if len(f.factors) == len(g.factors) {
         for i := 0; i < len(f.factors); i++ {
@@ -57,6 +55,27 @@ func (f *Factors) Equals(g Factors) bool {
     }
 
     return result
+}
+
+func (a *Factors) IsProductMatch(b Factors, c Factors) (bool, error) {
+    result := true
+
+    numFactors := len(a.factors)
+    var e error = nil
+
+    if numFactors == len(b.factors) && numFactors == len(c.factors) {
+        for i := 0; i < numFactors; i++ {
+            if a.factors[i] != (b.factors[i] + c.factors[i]) {
+                result = false
+                break
+            }
+        }
+    } else {
+        fmt.Printf("TRACER isProductMatch.else error condition ?? \n")
+        e = errors.New(fmt.Sprintf("illegal Factors %d %d %d", numFactors, len(b.factors), len(c.factors)))
+    }
+
+    return  result, e
 }
 
 func (f *Factors) Put(prime int, value int) {

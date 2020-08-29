@@ -103,3 +103,46 @@ func TestStringError(t *testing.T) {
         t.Errorf("Factors.Multiply() expected %v", expected)
     }
 }
+
+func TestIsProductMatch(t *testing.T) {
+    cases := []struct {
+        inA []int
+        inB []int
+        inC []int
+        expected bool
+    }{
+        { []int{1,0,0,0,1}, []int{1,0,0,0,0}, []int{0,0,0,0,1}, true },
+        { []int{4,3,2,1,0}, []int{2,3,1,0,0}, []int{2,0,1,1,0}, true },
+    }
+
+    config := config.New(5)
+
+    for _, c := range cases {
+        factorsA := NewFactorsForTesting(config, c.inA)
+        factorsB := NewFactorsForTesting(config, c.inB)
+        factorsC := NewFactorsForTesting(config, c.inC)
+
+        // test
+        result, e := factorsA.IsProductMatch(factorsB, factorsC)
+
+        if e != nil || (! result) {
+            t.Errorf("[%v].IsProductMatch(%v) == %v, expected %v", c.inA, c.inB, c.inC, c.expected)
+        }
+    }
+}
+
+func TestIsProductMatchError(t *testing.T) {
+    configAC := config.New(5)
+    configB := config.New(3)
+
+    factorsA := NewFactorsForTesting(configAC, []int{1,0,0,0,0})
+    factorsB := NewFactorsForTesting(configB, []int{1,0,0})
+    factorsC := NewFactorsForTesting(configAC, []int{1,0,0,0,0})
+
+    // test
+    _, e := factorsA.IsProductMatch(factorsB, factorsC)
+
+    if e == nil {
+        t.Errorf("Factors.Multiply() expected error")
+    }
+}

@@ -74,6 +74,10 @@ func (f *Factorization) Factor() {
     }
 }
 
+func (f *Factorization) IsProductMatch(b Factorization, c Factorization) (bool, error) {
+    return f.factors.IsProductMatch(b.factors, c.factors)
+}
+
 func (f Factorization) String() string {
     return fmt.Sprintf("%d :: %s", f.n, f.factors.String())
 }

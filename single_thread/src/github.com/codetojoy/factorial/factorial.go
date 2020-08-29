@@ -32,6 +32,10 @@ func (f *Factorial) Compute() {
     f.factorization = accumulation
 }
 
+func (f *Factorial) IsProductMatch(b Factorial, c Factorial) (bool, error) {
+    return f.factorization.IsProductMatch(b.factorization, c.factorization)
+}
+
 func (f Factorial) String() string {
     return fmt.Sprintf("%d! => %s", f.n, f.factorization.String())
 }

@@ -3,12 +3,13 @@ package main
 
 import (
     "fmt"
+    "log"
 
     "github.com/codetojoy/config"
     "github.com/codetojoy/factorial"
 )
 
-func process(n int) {
+func processN(n int) {
     config := config.New(n)
 
     for i:= 2; i <= n; i++ {
@@ -18,9 +19,40 @@ func process(n int) {
     }
 }
 
+func search(n int) {
+    config := config.New(n)
+    factorialIndex := factorial.NewFactorialIndex(config)
+
+    for a := 2; a <= n; a++ {
+        factorialA := factorialIndex.Get(a)
+        for b := 2; b <= a; b++ {
+            factorialB := factorialIndex.Get(b)
+            for c := 2; c <= a; c++ {
+                factorialC := factorialIndex.Get(c)
+                result, e := factorialA.IsProductMatch(factorialB, factorialC)
+
+                if e != nil {
+                    log.Fatal(e)
+                } else if result {
+                    fmt.Printf("TRACER %d! = %d! x %d!\n", a, b, c)
+                }
+            }
+        }
+    }
+}
+
 func main() {
-    n := 50
-    process(n)
+    doProcessN := true
+    if doProcessN {
+        n := 50
+        processN(n)
+    }
+
+    doSearch := false
+    if doSearch {
+        x := 10
+        search(x)
+    }
 
     fmt.Println("Ready.")
 }
