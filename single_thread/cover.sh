@@ -13,6 +13,9 @@ function gen_coverage {
     # open cover.html
 }
 
+cd $ROOT_DIR/config
+gen_coverage
+
 cd $ROOT_DIR/prime
 gen_coverage
 
