@@ -32,3 +32,20 @@ func TestCompute(t *testing.T) {
         }
     }
 }
+
+func TestString(t *testing.T) {
+    max := 30
+    primeIndex := prime.New(max)
+    n := 5
+    factorial := NewFactorial(n, max, primeIndex)
+    factorial.Compute()
+
+    // test
+    result := factorial.String()
+
+    expected := "5! => -1 :: 2: 3, 3: 1, 5: 1, "
+
+    if result != expected {
+        t.Errorf("String() expected: %v got: %v", expected, result)
+    }
+}

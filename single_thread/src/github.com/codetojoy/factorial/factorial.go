@@ -24,8 +24,8 @@ func (f *Factorial) Compute() {
     for i := 3; i <= f.n; i++ {
         current := factor.NewFactorization(i, f.max, f.primeIndex)
         current.Factor()
-        fmt.Printf("TRACER acc Compute(%d) ... %v\n", f.n, accumulation.GetPureFactorsString())
-        fmt.Printf("TRACER cur Compute(%d) ... %v\n", f.n, current.GetPureFactorsString())
+        // fmt.Printf("TRACER acc Compute(%d) ... %v\n", f.n, accumulation.GetPureFactorsString())
+        // fmt.Printf("TRACER cur Compute(%d) ... %v\n", f.n, current.GetPureFactorsString())
         accumulation = accumulation.Multiply(current)
     }
 

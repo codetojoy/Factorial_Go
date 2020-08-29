@@ -15,6 +15,10 @@ type Factorization struct {
     primeIterator prime.PrimeIterator
 }
 
+const (
+    UNKNOWN_VALUE = -1
+)
+
 func NewFactorization(n int, max int, primeIndex prime.PrimeIndex) Factorization {
     result := Factorization{n: n, max: max, primeIndex: primeIndex}
     result.factors = NewFactors(max, primeIndex)
@@ -43,6 +47,7 @@ func (f *Factorization) Multiply(g Factorization) Factorization {
         log.Fatal(err)
     } else {
         result.factors = resultFactors
+        result.n = UNKNOWN_VALUE
     }
 
     return result
