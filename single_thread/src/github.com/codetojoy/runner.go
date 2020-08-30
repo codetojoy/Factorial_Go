@@ -8,6 +8,7 @@ import (
 
     "github.com/codetojoy/config"
     "github.com/codetojoy/factorial"
+    "github.com/codetojoy/util"
 )
 
 func processN(n int) {
@@ -20,11 +21,8 @@ func processN(n int) {
     }
 }
 
-func search(n int) {
-    config := config.New(n)
-    factorialIndex := factorial.NewFactorialIndex(config)
-
-    for a := 2; a <= n; a++ {
+func searchChunk(chunkLow int, chunkHigh int, factorialIndex *factorial.FactorialIndex) {
+    for a := chunkLow; a <= chunkHigh; a++ {
         factorialA := factorialIndex.Get(a)
         for b := 2; b <= a; b++ {
             factorialB := factorialIndex.Get(b)
@@ -39,6 +37,25 @@ func search(n int) {
                 }
             }
         }
+    }
+}
+
+func search(n int) {
+    config := config.New(n)
+    factorialIndex := factorial.NewFactorialIndex(config)
+    isDone := false
+    chunkIndex := 0
+    const chunkSize = 20
+
+    for ! isDone {
+        chunkLow, chunkHigh := util.GetChunk(chunkIndex, chunkSize, n)
+        searchChunk(chunkLow, chunkHigh, factorialIndex)
+
+        if chunkHigh >= n {
+            isDone = true
+        }
+
+        chunkIndex++
     }
 }
 

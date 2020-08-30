@@ -11,6 +11,10 @@ cd $ROOT_DIR/config
 go test -test.v
 CONFIG_RESULT=$?
 
+cd $ROOT_DIR/util
+go test -test.v
+UTIL_RESULT=$?
+
 cd $ROOT_DIR/prime
 go test -test.v
 PRIME_RESULT=$?
@@ -24,6 +28,7 @@ go test -test.v
 FACTORIAL_RESULT=$?
 
 echo -e "\nTRACER config ${CONFIG_RESULT}\n"
+echo -e "TRACER util ${UTIL_RESULT}\n"
 echo -e "TRACER prime ${PRIME_RESULT}\n"
 echo -e "TRACER factor ${FACTOR_RESULT}\n"
 echo -e "TRACER factorial ${FACTORIAL_RESULT}\n"
