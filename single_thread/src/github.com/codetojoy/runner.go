@@ -75,6 +75,8 @@ func main() {
             fmt.Println("ERROR: unknown mode")
             os.Exit(1)
         }
+    } else {
+        fmt.Println("USAGE: requires mode param")
     }
 
     fmt.Println("Ready.")
