@@ -4,6 +4,7 @@ package main
 import (
     "fmt"
     "log"
+    "os"
 
     "github.com/codetojoy/config"
     "github.com/codetojoy/factorial"
@@ -42,16 +43,21 @@ func search(n int) {
 }
 
 func main() {
-    doProcessN := true
-    if doProcessN {
-        n := 50
-        processN(n)
-    }
+    numArgs := len(os.Args)
 
-    doSearch := false
-    if doSearch {
-        x := 10
-        search(x)
+    if numArgs > 1 {
+        mode := os.Args[1]
+
+        if mode == "process50" {
+            n := 50
+            processN(n)
+        } else if mode == "search" {
+            x := 121
+            search(x)
+        } else {
+            fmt.Println("ERROR: unknown mode")
+            os.Exit(1)
+        }
     }
 
     fmt.Println("Ready.")
