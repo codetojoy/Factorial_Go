@@ -9,6 +9,7 @@ import (
     "github.com/codetojoy/config"
     "github.com/codetojoy/factorial"
     "github.com/codetojoy/util"
+    "github.com/codetojoy/worker"
 )
 
 func processN(n int) {
@@ -22,21 +23,16 @@ func processN(n int) {
 }
 
 func searchChunk(chunkLow int, chunkHigh int, factorialIndex *factorial.FactorialIndex) {
-    for a := chunkLow; a <= chunkHigh; a++ {
-        factorialA := factorialIndex.Get(a)
-        for b := 2; b <= a; b++ {
-            factorialB := factorialIndex.Get(b)
-            for c := 2; c <= a; c++ {
-                factorialC := factorialIndex.Get(c)
-                result, e := factorialA.IsProductMatch(factorialB, factorialC)
+    payload := worker.Payload{ChunkLow: chunkLow, ChunkHigh: chunkHigh, FactorialIndex: factorialIndex}
+    result := worker.SearchChunk(payload)
 
-                if e != nil {
-                    log.Fatal(e)
-                } else if result {
-                    fmt.Printf("TRACER %d! = %d! x %d!\n", a, b, c)
-                }
-            }
+    if result.Err == nil {
+        for i := 0; i < len(result.Results); i++ {
+            result := result.Results[i]
+            fmt.Printf("TRACER %d! = %d! x %d!\n", result.A, result.B, result.C)
         }
+    } else {
+        log.Fatal(result.Err)
     }
 }
 
