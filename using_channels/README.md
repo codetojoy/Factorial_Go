@@ -10,5 +10,6 @@
 
 ### TODO
 
-* N/A
+* double-check the `select` idiom for correctness
+* seems to be a boundary condition where 120! is reported twice
 
