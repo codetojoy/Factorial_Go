@@ -1,6 +1,7 @@
 
 ### Summary
 
+* A basic, single-threaded example that will be migrated later to use channels/goroutines.
 * The `run.sh` and `test.sh` scripts are not idiomatic.
 * I have tried to set up `GOPATH` etc but I just can't get it to work.
     - e.g. to use a 3rd-party package such as: https://github.com/stretchr/testify
@@ -13,9 +14,3 @@
 * refine import so that we don't need `prime.PrimeIndex`
 * rename `New()` function for `PrimeIndex` ?
 * rename `PrimeIndex` to `Primes`
-
-x * use reference to PrimeIndex
-x * `Config` struct to consolidate params
-x * test edge-cases
-x * use `GOPATH` effectively ?
-x * code coverage in tests?
