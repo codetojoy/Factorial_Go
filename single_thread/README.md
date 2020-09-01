@@ -10,7 +10,8 @@
 
 ### TODO
 
-* break loop into chunks for prep re: multiple threads 
+* idiomatic `go doc`
+* idiomatic code format (use `go fmt`)
 * refine import so that we don't need `prime.PrimeIndex`
 * rename `New()` function for `PrimeIndex` ?
 * rename `PrimeIndex` to `Primes`

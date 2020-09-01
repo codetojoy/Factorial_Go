@@ -10,6 +10,8 @@
 
 ### TODO
 
+* idiomatic `go doc`
+* idiomatic code format (use `go fmt`)
 * double-check the `select` idiom for correctness
 * seems to be a boundary condition where 120! is reported twice
 
